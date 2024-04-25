@@ -27,5 +27,7 @@ the file should appear in the downloads of your google chrome window. Click on t
 ---
 
 Slides and code are adapted from geeksforgeeks to fit the course:
+
 https://www.geeksforgeeks.org/classes-objects-java/?ref=lbp
+
 https://www.geeksforgeeks.org/inheritance-in-java/?ref=lbp
