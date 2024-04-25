@@ -10,7 +10,9 @@ and then click on the raw button:
 the file should appear in the downloads of your google chrome window. Click on the file to open:
 
 <img width="878" alt="Screenshot 2024-04-25 at 13 14 21" src="https://github.com/b00rg/WaltonProgramming/assets/66336643/9906e369-94ad-4f26-92dd-76d3f1d0875a">
+
 ---
+
 Slides and code are adapted from geeksforgeeks to fit the course:
 https://www.geeksforgeeks.org/classes-objects-java/?ref=lbp
 https://www.geeksforgeeks.org/inheritance-in-java/?ref=lbp
