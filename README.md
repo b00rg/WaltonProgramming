@@ -22,7 +22,7 @@ and then click on the raw button:
 
 the file should appear in the downloads of your google chrome window. Click on the file to open:
 
-<img width="878" alt="Screenshot 2024-04-25 at 13 14 21" src="https://github.com/b00rg/WaltonProgramming/assets/66336643/9906e369-94ad-4f26-92dd-76d3f1d0875a">
+<img width="1392" alt="Screenshot 2024-04-25 at 13 32 48" src="https://github.com/b00rg/WaltonProgramming/assets/66336643/3cb6474b-6258-4bf0-ac3f-6e7bdd0ade7b">
 
 ---
 
