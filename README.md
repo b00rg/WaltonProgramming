@@ -1,6 +1,6 @@
 ## Sample code and powerpoint slides for Trinity Walton Club programming classes.
 
-#### Viewing the sample code
+### Viewing the sample code
 
 Click on the file:
 
@@ -10,7 +10,7 @@ The sample code should appear onscreen:
 
 <img width="1078" alt="Screenshot 2024-04-25 at 13 29 17" src="https://github.com/b00rg/WaltonProgramming/assets/66336643/d082808d-46d8-4975-a085-6493d1760855">
 
-#### Viewing the slides
+### Viewing the slides
 
 Download the slides by clicking on the powerpoint name:
 
