@@ -1,4 +1,12 @@
-### Sample code and powerpoint slides for Trinity Walton Club programming classes.
+## Sample code and powerpoint slides for Trinity Walton Club programming classes.
+
+#### Viewing the sample code
+Click on the file:
+<img width="711" alt="Screenshot 2024-04-25 at 13 28 50" src="https://github.com/b00rg/WaltonProgramming/assets/66336643/760b2cd0-3d09-4174-9774-78a2a80f76c9">
+The sample code should appear onscreen:
+<img width="1078" alt="Screenshot 2024-04-25 at 13 29 17" src="https://github.com/b00rg/WaltonProgramming/assets/66336643/d082808d-46d8-4975-a085-6493d1760855">
+
+#### Viewing the slides
 
 Download the slides by clicking on the powerpoint name:
 <img width="719" alt="Screenshot 2024-04-25 at 13 13 09" src="https://github.com/b00rg/WaltonProgramming/assets/66336643/b6e02180-3776-4d67-8a83-daa3255e232b">
