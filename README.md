@@ -14,7 +14,7 @@ The sample code / slides should appear onscreen:
 
 ---
 
-Slides and code are adapted from geeksforgeeks to fit the course:
+References:
 
 https://www.geeksforgeeks.org/classes-objects-java/?ref=lbp
 
