@@ -1,9 +1,3 @@
-class ChessPiece: # parent class for all chess pieces; initialises the xpos, ypos and colour
-    def __init__(self, colour, xpos, ypos): 
-        self.xpos = xpos 
-        self.ypos = ypos
-        self.colour = colour
-
 class Pawn(ChessPiece):
     def __init__(self, colour, xpos, ypos):
         super().__init__(colour, xpos, ypos)  # inheriting the initialisation from the Chess Piece class
