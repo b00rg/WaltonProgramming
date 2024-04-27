@@ -15,6 +15,8 @@ class Pawn(ChessPiece):
                 self.firstMove = False
                 return True
             elif movingypos - self.ypos == 1 and movingxpos == self.xpos:
+                if self.firstMove = True:
+                    self.firstMove = False
                 return True
             
         elif self.colour == "white":
