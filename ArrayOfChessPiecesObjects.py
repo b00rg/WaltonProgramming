@@ -12,3 +12,7 @@ self.chess_pieces = {
     'K': [King("white", self.positionsx['e'], self.positionsy['1'])],
     'k': [King("black", self.positionsx['e'], self.positionsy['8'])]
 }
+self.chess_pieces_emoji = {
+    "R": '♜', "N": '♞', "B": '♝', "Q": '♛', "K": '♚', "P": '♟',
+    "r": '♖', "n": '♘', "b": '♗', "q": '♕', "k": '♔', "p": '♙'
+}
