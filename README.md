@@ -21,3 +21,11 @@ https://www.geeksforgeeks.org/classes-objects-java/?ref=lbp
 https://www.geeksforgeeks.org/inheritance-in-java/?ref=lbp
 
 https://www.codingal.com/coding-for-kids/blog/building-a-chess-game-in-python/
+
+https://www.geeksforgeeks.org/loops-in-python/
+
+https://www.geeksforgeeks.org/python-lists/
+
+https://www.geeksforgeeks.org/python-dictionary/
+
+
