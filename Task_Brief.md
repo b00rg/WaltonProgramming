@@ -4,8 +4,8 @@
     * Note the `pawn` class and `castle` class has been updated. 
     * The `castle` class can also be found in the walton-programming sample code. 
 2. ChessBoard Class:
-    * Constructor (__init__ method):
-        * Write the __init__ method for the ChessBoard class.
+    * Constructor (`__init__` method):
+        * Write the `__init__` method for the ChessBoard class.
         * Initialise the board attribute as an 8x8 grid list with all elements set to None. 
     * populate_board Method:
         * Implement the populate_board method to place the initial set of chess pieces on the board.
@@ -19,8 +19,8 @@
         * Include row and column labels to make it easier for players to identify positions (A, B, C, etc. for the rows, and 1, 2, 3, etc. for the columns).
 4. move_piece Method:
     * Parameters:
-        * startx, starty: The coordinates of the piece to be moved.
-        * endx, endy: The coordinates where the piece will be moved to.
+        * `startx, starty`: The coordinates of the piece to be moved.
+        * `endx, endy`: The coordinates where the piece will be moved to.
     * Handling Invalid Moves:
         * Before attempting to move the piece, check if the starting position contains a piece belonging to the current player. If not, print a message indicating that there is no piece at the given position.
     * Legal Move Validation:
@@ -37,7 +37,6 @@
         * Implement the main game loop where players take turns making moves.
         * Inside the while loop, print the current player's turn and display the board using the print_board method.
         * Prompt the player to enter the starting and ending positions for their move.
-        * Convert the input positions to coordinates (startx, starty, endx, endy) suitable for the move_piece method.
+        * Convert the input positions to coordinates (`startx, starty, endx, endy`) suitable for the move_piece method.
     * Switching Players:
         * After a move is made, switch the current player to the other player.
-        * You can achieve this by updating the player variable to the value of 3 - player, which effectively toggles between player 1 and player 2.
