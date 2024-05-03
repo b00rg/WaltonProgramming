@@ -1,7 +1,7 @@
 # this is the barebones of the chess game code
 # it will NOT work by itself; your task is to finish the rest of the code
 
-class ChessPiece:
+class ChessPiece: ≈
     def __init__(self, colour, xpos, ypos):
         self.xpos = xpos
         self.ypos = ypos
@@ -12,7 +12,7 @@ class Pawn(ChessPiece): # logic for Pawn is changed to work with diagonal captur
         super().__init__(colour, xpos, ypos)
         self.has_moved = False  # Track if the pawn has moved
 
-    def legalMove(self, movingxpos, movingypos, board):
+    def legalMove(self, movingxpos, movingypos, board): # note that now we are passing in a new variable to the `legalMove` function; board, to let us check the position of the other pieces in the board, for if we are taking pieces
         # Pawns can move forward one square, or two squares on their first move
         if self.colour == "black":
             direction = 1
