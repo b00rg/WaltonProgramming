@@ -24,19 +24,19 @@
     * Handling Invalid Moves:
         * Before attempting to move the piece, check if the starting position contains a piece belonging to the current player. If not, print a message indicating that there is no piece at the given position.
     * Legal Move Validation:
-        * call upon the ChessPiece isLegalMove() to ensure that the chess piece is moving in a way that it is supposed to
+        * call upon the ChessPiece `isLegalMove()` to ensure that the chess piece is moving in a way that it is supposed to
     * Updating the Board:
         * If the move is legal, update the board to reflect the new position of the piece.
         * Set the destination square to the moving piece and the original square to None.
-        * Update the xpos and ypos attributes of the piece to reflect its new position on the board.
+        * Update the `xpos` and `ypos` attributes of the piece to reflect its new position on the board.
 6. play_chess Function:
     * Game Initialisation:
         * Start the game by creating an instance of the ChessBoard class.
-        * Set the initial player (player) to 1.
+        * Set the initial player (`player`) to 1.
     * Game Loop:
         * Implement the main game loop where players take turns making moves.
         * Inside the while loop, print the current player's turn and display the board using the print_board method.
         * Prompt the player to enter the starting and ending positions for their move.
-        * Convert the input positions to coordinates (`startx, starty, endx, endy`) suitable for the move_piece method.
+        * Convert the input positions to coordinates (`startx, starty, endx, endy`) suitable for the `move_piece` method.
     * Switching Players:
         * After a move is made, switch the current player to the other player.
