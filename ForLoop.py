@@ -45,5 +45,6 @@ def populate_board(self):
     for i in range(8):
         self.board[1][i] = Pawn("black", i, 1)  
         self.board[6][i] = Pawn("white", i, 6)  
-            
+
+
 
