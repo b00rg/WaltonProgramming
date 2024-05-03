@@ -19,3 +19,5 @@ References:
 https://www.geeksforgeeks.org/classes-objects-java/?ref=lbp
 
 https://www.geeksforgeeks.org/inheritance-in-java/?ref=lbp
+
+https://www.codingal.com/coding-for-kids/blog/building-a-chess-game-in-python/
