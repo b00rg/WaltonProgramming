@@ -7,12 +7,12 @@ class ChessPiece: ≈
         self.ypos = ypos
         self.colour = colour
 
-class Pawn(ChessPiece): # logic for Pawn is changed to work with diagonal capturing of pieces
+class Pawn(ChessPiece):
     def __init__(self, colour, xpos, ypos):
         super().__init__(colour, xpos, ypos)
         self.has_moved = False  # Track if the pawn has moved
 
-    def legalMove(self, movingxpos, movingypos, board): # note that now we are passing in a new variable to the `legalMove` function; board, to let us check the position of the other pieces in the board, for if we are taking pieces
+    def legalMove(self, movingxpos, movingypos, board):
         # Pawns can move forward one square, or two squares on their first move
         if self.colour == "black":
             direction = 1
@@ -27,7 +27,11 @@ class Pawn(ChessPiece): # logic for Pawn is changed to work with diagonal captur
 
         # Check if the destination square is occupied
         if board[movingypos][movingxpos] is not None:
-            return False
+            # If the destination square is occupied by an opponent's piece, allow capturing
+            if board[movingypos][movingxpos].colour != self.colour:
+                return abs(movingxpos - self.xpos) == 1 and movingypos - self.ypos == direction
+            else:
+                return False
 
         if movingxpos == self.xpos and movingypos == self.ypos + direction:
             return True
@@ -35,10 +39,7 @@ class Pawn(ChessPiece): # logic for Pawn is changed to work with diagonal captur
               board[self.ypos + direction][self.xpos] is None and
               board[self.ypos + 2 * direction][self.xpos] is None):
             return True
-        # Pawns can capture diagonally
-        elif (abs(movingxpos - self.xpos) == 1 and movingypos - self.ypos == direction and
-              board[movingypos][movingxpos] is not None):
-            return True
+        
         return False
 
 class Castle(ChessPiece):
