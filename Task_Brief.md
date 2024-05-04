@@ -40,3 +40,6 @@
         * Convert the input positions to coordinates (`startx, starty, endx, endy`) suitable for the `move_piece` method.
     * Switching Players:
         * After a move is made, switch the current player to the other player.
+7. Challenges:
+    * Code en passant
+    * Code pawn promotion
