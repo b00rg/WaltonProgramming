@@ -18,7 +18,11 @@ class Pawn(ChessPiece):
 
         # Check if the destination square is occupied
         if board[movingypos][movingxpos] is not None:
-            return False
+            # If the destination square is occupied by an opponent's piece, allow capturing
+            if board[movingypos][movingxpos].colour != self.colour:
+                return abs(movingxpos - self.xpos) == 1 and movingypos - self.ypos == direction
+            else:
+                return False
 
         if movingxpos == self.xpos and movingypos == self.ypos + direction:
             return True
@@ -26,8 +30,5 @@ class Pawn(ChessPiece):
               board[self.ypos + direction][self.xpos] is None and
               board[self.ypos + 2 * direction][self.xpos] is None):
             return True
-        # Pawns can capture diagonally
-        elif (abs(movingxpos - self.xpos) == 1 and movingypos - self.ypos == direction and
-              board[movingypos][movingxpos] is not None):
-            return True
+        
         return False
