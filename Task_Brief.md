@@ -1,9 +1,9 @@
-1. Complete Chess Piece Classes, if not already completed
+**1. Complete Chess Piece Classes, if not already completed**
     * See exercise from week 2 for more information
     * All of the chess pieces must be completed before moving onto the next task
     * Note the `pawn` class and `castle` class has been updated. 
     * The `castle` class can also be found in the walton-programming sample code. 
-2. ChessBoard Class:
+**2. ChessBoard Class:**
     * Constructor (`__init__` method):
         * Write the `__init__` method for the ChessBoard class.
         * Initialise the board attribute as an 8x8 grid list with all elements set to None. 
@@ -17,7 +17,7 @@
         * Implement the print_board method to display the current state of the chessboard.
         * Print the board as an 8x8 grid with pieces (you may use the dictionary found in pieces_emojis.py to do this).
         * Include row and column labels to make it easier for players to identify positions (A, B, C, etc. for the rows, and 1, 2, 3, etc. for the columns).
-4. move_piece Method:
+**3. `move_piece` Method:**
     * Parameters:
         * `startx, starty`: The coordinates of the piece to be moved.
         * `endx, endy`: The coordinates where the piece will be moved to.
@@ -29,7 +29,7 @@
         * If the move is legal, update the board to reflect the new position of the piece.
         * Set the destination square to the moving piece and the original square to None.
         * Update the `xpos` and `ypos` attributes of the piece to reflect its new position on the board.
-6. play_chess Function:
+**4. `play_chess` Function:**
     * Game Initialisation:
         * Start the game by creating an instance of the ChessBoard class.
         * Set the initial player (`player`) to 1.
@@ -40,6 +40,6 @@
         * Convert the input positions to coordinates (`startx, starty, endx, endy`) suitable for the `move_piece` method.
     * Switching Players:
         * After a move is made, switch the current player to the other player.
-7. Challenges:
+**5. Challenges:**
     * Code en passant
     * Code pawn promotion
