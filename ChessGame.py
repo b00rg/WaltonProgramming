@@ -114,21 +114,31 @@ class ChessBoard:
     def move_piece(self, startx, starty, endx, endy):
         piece = self.board[starty][startx]
         if not piece:
-            pass # implement logic for if there is no piece at the starting position here
+            # have print statement here to inform the player of the legality of their move
+            return False # no piece in given position
         if piece.legalMove(endx, endy, self.board):  # Passing the board instance
             pass # implement logic to move piece here
+            # change array of objects of chess board to current positionn
+            # change the draw board logic to update to current position
+            # end position of piece = current position of piece
+            # start position of piece = empty
+            return True # chess piece is allowed to move into given position
         else:
-            pass # implement logic if not legal move here
+            # have print statement here to inform the player of the legality of their move
+            return False # not legal move
 
 # Game Loop
 def play_chess():
     board = ChessBoard()
-    player = 1
+    player = 1 
     while True:
-      # put game loop logic here
-      # have the players change turn each iteration of the loop
+      # have the players change turn each iteration of the loop, printing which player is playing each time 
       # print the board each time
-      # have the player input their starting position and ending position, to input into the `move_piece` function
-      # also check if the move is invalid and let the user know if their move is invalid, and to try inputting their move again
+      # have the player input their starting position and ending position
+      # change the inputted values, e.g. A2 -> [0, 1] to input into the move_piece function
+      # also check if the move is within the bounds of the chess board
+      # let the user know if their move is invalid if false, and to try inputting their move again using a print statement
+      # have a correct termination of the game, i.e. when the king is taken 
+      # have an end game print statement
 
 play_chess() # calling the play chess function
