@@ -1,7 +1,9 @@
 # this is the barebones of the chess game code
 # it will NOT work by itself; your task is to finish the rest of the code
 
-class ChessPiece: ≈
+import math  
+
+class ChessPiece: 
     def __init__(self, colour, xpos, ypos):
         self.xpos = xpos
         self.ypos = ypos
@@ -121,6 +123,77 @@ class ChessBoard:
             # have print statement here to inform the player of the legality of their move
             return False # not legal move
 
+# This bit here is the mathematical function minmax to create an ai chess player, to call later in the play_chess() function
+# I have implemented this already in the play_chess function, so no additional code is needed for the ai. 
+# Unfortunately, we won't have time to cover how this works in this module, but if you are interested, check out this video:
+# https://www.youtube.com/watch?v=l-hh51ncgDI&ab_channel=SebastianLague
+class MinimaxChessPlayer:
+    def __init__(self, colour):
+        self.colour = colour
+
+    def get_legal_moves(self, board):
+        legal_moves = []
+        for y in range(8):
+            for x in range(8):
+                piece = board[y][x]
+                if piece and piece.colour == self.colour:
+                    for dy in range(-1, 2):
+                        for dx in range(-1, 2):
+                            if dy == 0 and dx == 0:
+                                continue
+                            new_x, new_y = x + dx, y + dy
+                            if 0 <= new_x < 8 and 0 <= new_y < 8:
+                                if piece.legalMove(new_x, new_y, board):
+                                    legal_moves.append(((x, y), (new_x, new_y)))
+        return legal_moves
+
+    def simulate_move(self, board, move):
+        start, end = move
+        new_board = [row[:] for row in board]
+        x, y = start
+        new_x, new_y = end
+        new_board[new_y][new_x] = new_board[y][x]
+        new_board[y][x] = None
+        return new_board
+
+    def evaluate_board(self, board):
+        # Simple evaluation function: count pieces
+        score = 0
+        for row in board:
+            for piece in row:
+                if piece:
+                    if piece.colour == self.colour:
+                        score += self.get_piece_value(piece)
+                    else:
+                        score -= self.get_piece_value(piece)
+        return score
+
+    def get_piece_value(self, piece):
+        # Assign values to pieces for evaluation
+        if isinstance(piece, Pawn):
+            return 1
+        elif isinstance(piece, Knight) or isinstance(piece, Bishop):
+            return 3
+        elif isinstance(piece, Castle):
+            return 5
+        elif isinstance(piece, Queen):
+            return 9
+        elif isinstance(piece, King):
+            return 1000  # Arbitrarily high value for the king
+        return 0
+
+def ai_move(board, ai_player):
+    legal_moves = ai_player.get_legal_moves(board)
+    best_move = None
+    best_score = -math.inf
+    for move in legal_moves:
+        new_board = ai_player.simulate_move(board, move)
+        score = ai_player.evaluate_board(new_board)
+        if score > best_score:
+            best_score = score
+            best_move = move
+    return best_move
+    
 # Game Loop
 def play_chess():
     board = ChessBoard()
@@ -134,5 +207,22 @@ def play_chess():
       # let the user know if their move is invalid if false, and to try inputting their move again using a print statement
       # have a correct termination of the game, i.e. when the king is taken 
       # have an end game print statement
+
+        # AI player's turn 
+        # ignore this piece of code here; it calles the ai chess player to move and switches the players
+        # you need only concern yourself with the human player in this chess game
+        ai_best_move = ai_move(board.board, ai_player)
+        if ai_best_move:
+            start, end = ai_best_move
+            startx, starty = start
+            endx, endy = end
+            if board.move_piece(startx, starty, endx, endy):
+                player = 3 - player  # Switch players
+            else:
+                print("AI made an invalid move. Game ends.")
+                break
+        else:
+            print("AI cannot make a move. Game ends.")
+            break
 
 play_chess() # calling the play chess function
