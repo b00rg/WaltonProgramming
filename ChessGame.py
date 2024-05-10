@@ -3,7 +3,7 @@
 # note that there is an AI function premade to use as the second player; this has already been called in the play_chess() function
 # to allow one person to play chess as a puzzle in the puzzle room. 
 
-import math  
+import math  # this is for the chess AI; it is not needed for the implementation of the code
 
 class ChessPiece: 
     def __init__(self, colour, xpos, ypos):
