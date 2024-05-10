@@ -85,12 +85,6 @@ class ChessBoard:
         self.populate_board()  # call for the initialisation of the board
 
     def populate_board(self):
-        # Populate pawns
-        for i in range(8):
-            self.board[1][i] = Pawn("black", i, 1)  
-            self.board[6][i] = Pawn("white", i, 6)  
-    
-        # Populate other pieces
         self.board[0][0] = Castle("black", 0, 0)
         # Place the rest of the pieces in the chess board initialisation here
 
