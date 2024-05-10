@@ -1,5 +1,7 @@
 # this is the barebones of the chess game code
 # it will NOT work by itself; your task is to finish the rest of the code
+# note that there is an AI function premade to use as the second player; this has already been called in the play_chess() function
+# to allow one person to play chess as a puzzle in the puzzle room. 
 
 import math  
 
@@ -127,6 +129,7 @@ class ChessBoard:
 # I have implemented this already in the play_chess function, so no additional code is needed for the ai. 
 # Unfortunately, we won't have time to cover how this works in this module, but if you are interested, check out this video:
 # https://www.youtube.com/watch?v=l-hh51ncgDI&ab_channel=SebastianLague
+
 class MinimaxChessPlayer:
     def __init__(self, colour):
         self.colour = colour
