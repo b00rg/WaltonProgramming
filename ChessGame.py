@@ -76,7 +76,7 @@ class Knight(ChessPiece):
     def __init__(self, colour, xpos, ypos):
         super().__init__(colour, xpos, ypos)
 
-    def legalMove(self, movingxpos, movingypos):
+    def legalMove(self, movingxpos, movingypos, board):
       pass # put in your logic here
 
 class ChessBoard:
