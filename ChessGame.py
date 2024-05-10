@@ -229,3 +229,10 @@ def play_chess():
             break
 
 play_chess() # calling the play chess function
+
+# Finished? Here are some additional challenges to implement:
+# Pawn Promotion
+# En Passant
+# Castling
+# Checkmate Detection
+# Stalemate Detection
