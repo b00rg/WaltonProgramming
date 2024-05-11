@@ -53,7 +53,7 @@ class Bishop(ChessPiece):
         super().__init__(colour, xpos, ypos)
     
     def legalMove(self, movingxpos, movingypos, board):
-        pass
+        pass # input your legal move statement here
 
 class King(ChessPiece):
     def __init__(self, colour, xpos, ypos):
@@ -69,14 +69,14 @@ class Queen(ChessPiece):
         super().__init__(colour, xpos, ypos)
 
     def legalMove(self, movingxpos, movingypos, board):
-        pass
+        pass # input your legal move statement in here
         
 class Knight(ChessPiece):
     def __init__(self, colour, xpos, ypos):
         super().__init__(colour, xpos, ypos)
 
     def legalMove(self, movingxpos, movingypos, board):
-        pass
+        pass  # input your legal move statement in here
 
 class ChessBoard:
     def __init__(self):
