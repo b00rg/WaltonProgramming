@@ -190,5 +190,7 @@ def play_chess():
                 print("Try again.")
         else:
             print("Invalid coordinates. Coordinates must be within the board.")
+        if isinstance(board.board[0][3], Queen) and board.board[0][3].colour == "black":
+            print("Password")
 
 play_chess()
