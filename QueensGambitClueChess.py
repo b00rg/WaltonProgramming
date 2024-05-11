@@ -1,3 +1,7 @@
+# put the chess pieces into a queen's gambit
+# prints "Password" onto the screen
+# change password to the password to the combination lock
+
 class ChessPiece:
     def __init__(self, colour, xpos, ypos):
         self.xpos = xpos
