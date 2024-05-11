@@ -178,7 +178,9 @@ def play_chess():
                 print("Try again.")
         else:
             print("Invalid coordinates. Coordinates must be within the board.")
-        if isinstance(board.board[0][3], Queen) and board.board[0][3].colour == "black":
-            print("Password")
+        if isinstance(board.board[3][0], Pawn) and board.board[0][3].colour == "black":
+            if isinstance(board.board[3][1], Pawn) and board.board[0][3].colour == "black":
+                if isinstance(board.board[3][2], Pawn) and board.board[0][3].colour == "black":
+                    print("Password")
 
 play_chess()
