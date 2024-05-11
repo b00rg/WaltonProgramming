@@ -53,11 +53,7 @@ class Bishop(ChessPiece):
         super().__init__(colour, xpos, ypos)
     
     def legalMove(self, movingxpos, movingypos, board):
-        if (movingxpos-self.xpos) == (movingypos-self.ypos):
-            return True
-        if (movingxpos-self.xpos) == (-movingypos+self.xpos):
-            return True
-        return False
+        pass
 
 class King(ChessPiece):
     def __init__(self, colour, xpos, ypos):
@@ -73,22 +69,14 @@ class Queen(ChessPiece):
         super().__init__(colour, xpos, ypos)
 
     def legalMove(self, movingxpos, movingypos, board):
-        if movingxpos == movingypos:
-            return True
-        if (self.xpos == movingxpos or self.ypos == movingypos):
-            return True 
-        return False
+        pass
         
 class Knight(ChessPiece):
     def __init__(self, colour, xpos, ypos):
         super().__init__(colour, xpos, ypos)
 
-    def legalMove(self, movingxpos, movingypos):
-        if (self.xpos - movingxpos == 3 or movingxpos-self.xpos == 3) and (self.ypos - movingypos == 2 or movingypos-self.ypos == 2):
-            return True
-        elif (self.ypos - movingypos == 3 or movingypos-self.ypos == 3) and (self.xpos - movingxpos == 2 or movingxpos-self.xpos == 2):
-            return True
-        return False
+    def legalMove(self, movingxpos, movingypos, board):
+        pass
 
 class ChessBoard:
     def __init__(self):
