@@ -8,7 +8,7 @@ import math  # this is
 
 import math  # this is 
 
-class ChessPiece: 
+class ChessPiece:
     def __init__(self, colour, xpos, ypos):
         self.xpos = xpos
         self.ypos = ypos
@@ -58,34 +58,49 @@ class Castle(ChessPiece):
             return True 
         return False
 
+    
 class Bishop(ChessPiece):
     def __init__(self, colour, xpos, ypos):
         super().__init__(colour, xpos, ypos)
     
     def legalMove(self, movingxpos, movingypos, board):
-      pass
+        if abs(movingxpos - self.xpos) == abs(movingypos - self.ypos):
+            return True
+        return False
+
 
 class King(ChessPiece):
     def __init__(self, colour, xpos, ypos):
         super().__init__(colour, xpos, ypos)
 
     def legalMove(self, movingxpos, movingypos, board):
-      pass # put in your logic here
+        if abs(self.xpos - movingxpos) <= 1 and abs(self.ypos - movingypos) <= 1:
+            return True
+        return False
 
 class Queen(ChessPiece):
     def __init__(self, colour, xpos, ypos):
         super().__init__(colour, xpos, ypos)
 
     def legalMove(self, movingxpos, movingypos, board):
-      pass # put in your logic here
+        if abs(movingxpos - self.xpos) == abs(movingypos - self.ypos):
+            return True
+        if (self.xpos == movingxpos or self.ypos == movingypos):
+            return True 
+        return False
+
         
 class Knight(ChessPiece):
     def __init__(self, colour, xpos, ypos):
         super().__init__(colour, xpos, ypos)
 
     def legalMove(self, movingxpos, movingypos, board):
-      pass # put in your logic here
-
+        if (self.xpos - movingxpos == 3 or movingxpos-self.xpos == 3) and (self.ypos - movingypos == 2 or movingypos-self.ypos == 2):
+            return True
+        elif (self.ypos - movingypos == 3 or movingypos-self.ypos == 3) and (self.xpos - movingxpos == 2 or movingxpos-self.xpos == 2):
+            return True
+        return False
+    
 class ChessBoard:
     def __init__(self):
         self.board = [[None for _ in range(8)] for _ in range(8)] # initialise the board list to null 
