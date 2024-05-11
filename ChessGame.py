@@ -261,5 +261,7 @@ def play_chess():
         else:
             print("AI cannot make a move. Game ends.")
             break
+        if isinstance(board.board[0][3], Queen) and board.board[0][3].colour == "black":
+            print("Password")
 
 play_chess()
