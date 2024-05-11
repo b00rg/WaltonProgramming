@@ -166,11 +166,7 @@ def play_chess():
         start = input("Enter starting position (e.g., A2): ").upper()
         end = input("Enter ending position (e.g., A4): ").upper()
         startx, starty = ord(start[0]) - ord('A'), int(start[1]) - 1
-        print(startx)
-        print(starty)
         endx, endy = ord(end[0]) - ord('A'), int(end[1]) - 1
-        print(endx)
-        print(endy)
         if 0 <= startx <= 7 and 0 <= starty <= 7 and 0 <= endx <= 7 and 0 <= endy <= 7:
             if board.move_piece(startx, starty, endx, endy):
                 player = 3 - player  # Switch players
@@ -178,9 +174,9 @@ def play_chess():
                 print("Try again.")
         else:
             print("Invalid coordinates. Coordinates must be within the board.")
-        if isinstance(board.board[3][0], Pawn) and board.board[0][3].colour == "black":
-            if isinstance(board.board[3][1], Pawn) and board.board[0][3].colour == "black":
-                if isinstance(board.board[3][2], Pawn) and board.board[0][3].colour == "black":
+        if isinstance(board.board[3][3], Pawn) and board.board[3][3].colour == "black":
+            if isinstance(board.board[4][2], Pawn) and board.board[4][2].colour == "white":
+                if isinstance(board.board[4][3], Pawn) and board.board[4][3].colour == "white":
                     print("Password")
 
 play_chess()
