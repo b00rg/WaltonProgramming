@@ -1,9 +1,4 @@
-# this is the barebones of the chess game code
-# it will NOT work by itself; your task is to finish the rest of the code
-# note that there is an AI function premade to use as the second player; this has already been called in the play_chess() function
-# to allow one person to play chess as a puzzle in the puzzle room. 
-
-import math  # this is for the chess AI; it is not needed for the implementation of the code
+import math
 
 class ChessPiece:
     def __init__(self, colour, xpos, ypos):
@@ -55,16 +50,16 @@ class Castle(ChessPiece):
             return True 
         return False
 
+    
 class Bishop(ChessPiece):
     def __init__(self, colour, xpos, ypos):
         super().__init__(colour, xpos, ypos)
     
     def legalMove(self, movingxpos, movingypos, board):
-        if (movingxpos-self.xpos) == (movingypos-self.ypos):
-            return True
-        if (movingxpos-self.xpos) == (-movingypos+self.xpos):
+        if abs(movingxpos - self.xpos) == abs(movingypos - self.ypos):
             return True
         return False
+
 
 class King(ChessPiece):
     def __init__(self, colour, xpos, ypos):
@@ -80,11 +75,12 @@ class Queen(ChessPiece):
         super().__init__(colour, xpos, ypos)
 
     def legalMove(self, movingxpos, movingypos, board):
-        if movingxpos == movingypos:
+        if abs(movingxpos - self.xpos) == abs(movingypos - self.ypos):
             return True
         if (self.xpos == movingxpos or self.ypos == movingypos):
             return True 
         return False
+
         
 class Knight(ChessPiece):
     def __init__(self, colour, xpos, ypos):
@@ -96,18 +92,42 @@ class Knight(ChessPiece):
         elif (self.ypos - movingypos == 3 or movingypos-self.ypos == 3) and (self.xpos - movingxpos == 2 or movingxpos-self.xpos == 2):
             return True
         return False
-
+    
 class ChessBoard:
     def __init__(self):
-        self.board = [[None for _ in range(8)] for _ in range(8)] # initialise the board list to null 
-        self.populate_board()  # call for the initialisation of the board
+        self.board = [[None for _ in range(8)] for _ in range(8)]
+        self.populate_board()
 
     def populate_board(self):
+        # Populate pawns
+        for i in range(8):
+            self.board[1][i] = Pawn("black", i, 1)  
+            self.board[6][i] = Pawn("white", i, 6)  
+    
+        # Populate other pieces
         self.board[0][0] = Castle("black", 0, 0)
-        # Place the rest of the pieces in the chess board initialisation here
+        self.board[0][7] = Castle("black", 0, 7)
+        self.board[7][0] = Castle("white", 7, 0)
+        self.board[7][7] = Castle("white", 7, 7)
+        
+        self.board[0][1] = Knight("black", 0, 1)
+        self.board[0][6] = Knight("black", 0, 6)
+        self.board[7][1] = Knight("white", 7, 1)
+        self.board[7][6] = Knight("white", 7, 6)
+        
+        self.board[0][2] = Bishop("black", 0, 2)
+        self.board[0][5] = Bishop("black", 0, 5)
+        self.board[7][2] = Bishop("white", 7, 2)
+        self.board[7][5] = Bishop("white", 7, 5)
+        
+        self.board[0][3] = Queen("black", 0, 3)
+        self.board[7][3] = Queen("white", 7, 3)
+        
+        self.board[0][4] = King("black", 0, 4)
+        self.board[7][4] = King("white", 7, 4)
 
     def print_board(self):
-        piece_emojis = { # dictionary to access the emoji pieces of the chess piece 
+        piece_emojis = {
             "Pawn_black": "♟️",
             "Pawn_white": "♙",
             "Castle_black": "♜",
@@ -121,28 +141,36 @@ class ChessBoard:
             "King_black": "♚",
             "King_white": "♔"
         }
-        # have the board print logic here
+        column_labels = "ABCDEFGH"
+        print("  ", " ".join(column_labels))
+        for i, row in enumerate(self.board):
+            print(i+1, end="  ")
+            for piece in row:
+                if piece:
+                    piece_name = piece.__class__.__name__ + "_" + piece.colour
+                    print(piece_emojis[piece_name], end=' ')
+                else:
+                    print('_', end=' ')
+            print()
 
     def move_piece(self, startx, starty, endx, endy):
+        print("Moving piece from", startx, starty, "to", endx, endy)  # Debugging print
         piece = self.board[starty][startx]
         if not piece:
-            # have print statement here to inform the player of the legality of their move
-            return False # no piece in given position
+            print("No piece at the given position.")
+            return False
+                
         if piece.legalMove(endx, endy, self.board):  # Passing the board instance
-            pass # implement logic to move piece here
-            # change array of objects of chess board to current positionn
-            # change the draw board logic to update to current position
-            # end position of piece = current position of piece
-            # start position of piece = empty
-            return True # chess piece is allowed to move into given position
+            self.board[endy][endx] = piece
+            self.board[starty][startx] = None
+            piece.xpos = endx
+            piece.ypos = endy
+            print("Moved", piece.__class__.__name__, "to", endx, endy)  # Debugging print
+            return True
         else:
-            # have print statement here to inform the player of the legality of their move
-            return False # not legal move
-
-# This bit here is the mathematical function minmax to create an ai chess player, to call later in the play_chess() function
-# I have implemented this already in the play_chess function, so no additional code is needed for the ai. 
-# Unfortunately, we won't have time to cover how this works in this module, but if you are interested, check out this video:
-# https://www.youtube.com/watch?v=l-hh51ncgDI&ab_channel=SebastianLague
+            print("Illegal move.")
+            return False
+        
 
 class MinimaxChessPlayer:
     def __init__(self, colour):
@@ -210,24 +238,30 @@ def ai_move(board, ai_player):
             best_score = score
             best_move = move
     return best_move
-    
+
 # Game Loop
 def play_chess():
     board = ChessBoard()
-    player = 1 
-    while True:
-      # have the players change turn each iteration of the loop, printing which player is playing each time 
-      # print the board each time
-      # have the player input their starting position and ending position
-      # change the inputted values, e.g. A2 -> [0, 1] to input into the move_piece function
-      # also check if the move is within the bounds of the chess board
-      # let the user know if their move is invalid if false, and to try inputting their move again using a print statement
-      # have a correct termination of the game, i.e. when the king is taken 
-      # have an end game print statement
+    player = 1
+    ai_player = MinimaxChessPlayer("white")  # Example: AI plays as white
 
-        # AI player's turn 
-        # ignore this piece of code here; it calles the ai chess player to move and switches the players
-        # you need only concern yourself with the human player in this chess game
+    while True:
+        print("Player", player, "'s turn")
+        board.print_board()
+        start = input("Enter starting position (e.g., A2): ").upper()
+        end = input("Enter ending position (e.g., A4): ").upper()
+        startx, starty = ord(start[0]) - ord('A'), int(start[1]) - 1
+        endx, endy = ord(end[0]) - ord('A'), int(end[1]) - 1
+
+        if 0 <= startx <= 7 and 0 <= starty <= 7 and 0 <= endx <= 7 and 0 <= endy <= 7:
+            if board.move_piece(startx, starty, endx, endy):
+                player = 3 - player  # Switch players
+            else:
+                print("Try again.")
+        else:
+            print("Invalid coordinates. Coordinates must be within the board.")
+
+        # AI player's turn
         ai_best_move = ai_move(board.board, ai_player)
         if ai_best_move:
             start, end = ai_best_move
@@ -242,11 +276,4 @@ def play_chess():
             print("AI cannot make a move. Game ends.")
             break
 
-play_chess() # calling the play chess function
-
-# Finished? Here are some additional challenges to implement:
-# Pawn Promotion
-# En Passant
-# Castling
-# Checkmate Detection
-# Stalemate Detection
+play_chess()
