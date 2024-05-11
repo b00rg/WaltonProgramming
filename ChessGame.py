@@ -56,9 +56,7 @@ class Bishop(ChessPiece):
         super().__init__(colour, xpos, ypos)
     
     def legalMove(self, movingxpos, movingypos, board):
-        if abs(movingxpos - self.xpos) == abs(movingypos - self.ypos):
-            return True
-        return False
+        pass # fill in this bit here
 
 
 class King(ChessPiece):
@@ -69,29 +67,20 @@ class King(ChessPiece):
         if abs(self.xpos - movingxpos) <= 1 and abs(self.ypos - movingypos) <= 1:
             return True
         return False
-
-class Queen(ChessPiece):
-    def __init__(self, colour, xpos, ypos):
-        super().__init__(colour, xpos, ypos)
-
-    def legalMove(self, movingxpos, movingypos, board):
-        if abs(movingxpos - self.xpos) == abs(movingypos - self.ypos):
-            return True
-        if (self.xpos == movingxpos or self.ypos == movingypos):
-            return True 
-        return False
-
         
 class Knight(ChessPiece):
     def __init__(self, colour, xpos, ypos):
         super().__init__(colour, xpos, ypos)
 
     def legalMove(self, movingxpos, movingypos, board):
-        if (self.xpos - movingxpos == 3 or movingxpos-self.xpos == 3) and (self.ypos - movingypos == 2 or movingypos-self.ypos == 2):
-            return True
-        elif (self.ypos - movingypos == 3 or movingypos-self.ypos == 3) and (self.xpos - movingxpos == 2 or movingxpos-self.xpos == 2):
-            return True
-        return False
+        pass
+
+class Queen(ChessPiece):
+    def __init__(self, colour, xpos, ypos):
+        super().__init__(colour, xpos, ypos)
+    
+    def legalMove(self,movingxpos,movingypos,board):
+        pass
     
 class ChessBoard:
     def __init__(self):
@@ -120,8 +109,6 @@ class ChessBoard:
         self.board[7][2] = Bishop("white", 7, 2)
         self.board[7][5] = Bishop("white", 7, 5)
         
-        self.board[0][3] = Queen("black", 0, 3)
-        self.board[7][3] = Queen("white", 7, 3)
         
         self.board[0][4] = King("black", 0, 4)
         self.board[7][4] = King("white", 7, 4)
@@ -221,8 +208,7 @@ class MinimaxChessPlayer:
             return 3
         elif isinstance(piece, Castle):
             return 5
-        elif isinstance(piece, Queen):
-            return 9
+
         elif isinstance(piece, King):
             return 1000  # Arbitrarily high value for the king
         return 0
