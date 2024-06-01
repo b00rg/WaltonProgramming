@@ -184,10 +184,5 @@ def play_chess():
             if isinstance(board.board[4][2], Pawn) and board.board[4][2].colour == "white":
                 if isinstance(board.board[4][3], Pawn) and board.board[4][3].colour == "white":
                     print("Password")
-        
-        if isinstance(board.board[3][3], Pawn) and board.board[3][3].colour == "black":
-            if isinstance(board.board[4][2], Pawn) and board.board[4][2].colour == "white":
-                if isinstance(board.board[4][3], Pawn) and board.board[4][3].colour == "white":
-                    print("Password")
 
 play_chess()
