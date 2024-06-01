@@ -48,8 +48,7 @@ class Castle(ChessPiece):
         super().__init__(colour, xpos, ypos)
     
     def legalMove(self, movingxpos, movingypos, board):
-        if (self.xpos == movingxpos or self.ypos == movingypos):
-            return True 
+        print("You are moving the wrong piece!")
         return False
 
 class Bishop(ChessPiece):
@@ -57,15 +56,15 @@ class Bishop(ChessPiece):
         super().__init__(colour, xpos, ypos)
     
     def legalMove(self, movingxpos, movingypos, board):
-        pass # input your legal move statement here
+        print("You are moving the wrong piece!")
+        return False
 
 class King(ChessPiece):
     def __init__(self, colour, xpos, ypos):
         super().__init__(colour, xpos, ypos)
 
     def legalMove(self, movingxpos, movingypos, board):
-        if abs(self.xpos - movingxpos) <= 1 and abs(self.ypos - movingypos) <= 1:
-            return True
+        print("You are moving the wrong piece!")
         return False
 
 class Queen(ChessPiece):
@@ -73,14 +72,16 @@ class Queen(ChessPiece):
         super().__init__(colour, xpos, ypos)
 
     def legalMove(self, movingxpos, movingypos, board):
-        pass # input your legal move statement in here
+        print("You are moving the wrong piece!")
+        return False
         
 class Knight(ChessPiece):
     def __init__(self, colour, xpos, ypos):
         super().__init__(colour, xpos, ypos)
 
     def legalMove(self, movingxpos, movingypos, board):
-        pass  # input your legal move statement in here
+        print("You are moving the wrong piece!")
+        return False
 
 class ChessBoard:
     def __init__(self):
@@ -143,7 +144,6 @@ class ChessBoard:
             print()
 
     def move_piece(self, startx, starty, endx, endy):
-        print("Moving piece from", startx, starty, "to", endx, endy)  # Debugging print
         piece = self.board[starty][startx]
         if not piece:
             print("No piece at the given position.")
@@ -154,12 +154,12 @@ class ChessBoard:
             self.board[starty][startx] = None
             piece.xpos = endx
             piece.ypos = endy
-            print("Moved", piece.__class__.__name__, "to", endx, endy)  # Debugging print
+            print("You are moving the right type of piece!") 
             return True
         else:
-            print("Illegal move.")
             return False
 
+# Game Loop
 # Game Loop
 def play_chess():
     board = ChessBoard()
@@ -178,6 +178,13 @@ def play_chess():
                 print("Try again.")
         else:
             print("Invalid coordinates. Coordinates must be within the board.")
+        
+        # Check for Queen's Gambit
+        if isinstance(board.board[3][3], Pawn) and board.board[3][3].colour == "black":
+            if isinstance(board.board[4][2], Pawn) and board.board[4][2].colour == "white":
+                if isinstance(board.board[4][3], Pawn) and board.board[4][3].colour == "white":
+                    print("Password")
+        
         if isinstance(board.board[3][3], Pawn) and board.board[3][3].colour == "black":
             if isinstance(board.board[4][2], Pawn) and board.board[4][2].colour == "white":
                 if isinstance(board.board[4][3], Pawn) and board.board[4][3].colour == "white":
